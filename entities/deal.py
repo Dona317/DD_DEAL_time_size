@@ -39,21 +39,3 @@ class Deal():
 
     def __str__(self) -> str:
         return f"id: {self.deal_id}, company: {self.company}, size: {self.deal_size}, date: {self.deal_date}, gafam: {self.gafam}"
-
-    @staticmethod
-    def get_unique_companies(deals: list["Deal"]) -> list[str]:
-        companies = {deal.company for deal in deals}
-        return list(companies)
-
-    @staticmethod
-    def get_deals_by_company_name(all_deals: list["Deal"], company_name: str) -> list["Deal"]:
-        company_deals = [deal for deal in all_deals if deal.company == company_name]
-        return company_deals
-
-    @staticmethod
-    def order_by_deal_date(deals: list["Deal"]) -> None:
-        deals.sort(key=lambda deal: deal.deal_date)
-
-    @staticmethod
-    def print_deals(deals: list["Deal"]):
-        [print(deal) for deal in deals]
