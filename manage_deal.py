@@ -1,29 +1,27 @@
 from entities.deal import Deal
 
+SECONDS_PER_MONTH = 60 * 60 * 24 * 30
+
 class ManageDeal():
     @staticmethod
     def print_deals(deals: list[Deal]):
         [print(deal) for deal in deals]
 
     @staticmethod
-    def avg_delta_time_months_for_all_deals(deals: list[Deal]) -> float:
+    def deltas_time_months_for_all_deals(deals: list[Deal]) -> list[float]:
         ordered_deals: list[Deal] = ManageDeal.__get_order_deals_by_company_and_date(deals)
 
-        total_delta = 0
-        count = 0
+        deltas_months = []
 
         for i in range(len(ordered_deals) - 1):
             if ordered_deals[i].company == ordered_deals[i+1].company:
                 delta = ordered_deals[i+1].deal_date - ordered_deals[i].deal_date
-                total_delta += delta.total_seconds()
-                count += 1
+                deltas_months.append(delta.total_seconds() / SECONDS_PER_MONTH)
 
-        if count == 0:
-            return 0
+        if not deltas_months:
+            return []
 
-        avg_seconds = total_delta / count
-        seconds_per_month = 60 * 60 * 24 * 30
-        return avg_seconds / seconds_per_month
+        return deltas_months
 
     @staticmethod
     def __get_unique_companies(deals: list[Deal]) -> list[str]:
