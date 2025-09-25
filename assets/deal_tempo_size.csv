@@ -1,4 +1,4 @@
-deal_id,companies,deal_size,year_founded,gafam,bigtech_narrow,bigtech_large_excluding_gafamn,bigtech_large_composite,ai_giant_narrow,ai_giant_large,no_bigtech,big_no_tech,acc_inc_custom,acc_inc_pb
+deal_id,company,deal_size,year_founded,gafam,bigtech_narrow,bigtech_large_excluding_gafamn,bigtech_large_composite,ai_giant_narrow,ai_giant_large,no_bigtech,big_no_tech,acc_inc_custom,acc_inc_pb
 140519-71T,12 Sigma Technologies,0.27,2015,0,0,0,0,0,0,1,0,0,0
 98154-55T,12 Sigma Technologies,25.71,2015,0,0,0,0,0,0,1,0,0,0
 98154-64T,12 Sigma Technologies,,2015,0,0,0,0,0,0,1,0,0,0
@@ -4608,4 +4608,4 @@ deal_id,companies,deal_size,year_founded,gafam,bigtech_narrow,bigtech_large_excl
 247442-68T,ZuAi,,2021,1,1,0,1,1,1,0,0,0,1
 198742-87T,ZuAi,0.45,2021,0,0,0,0,0,0,1,0,0,0
 227507-05T,ZuAi,0.45,2021,0,0,0,0,0,0,1,0,0,0
-"© PitchBook Data, Inc. 2025",,,,,,,,,,,,,
+"ï¿½ PitchBook Data, Inc. 2025",,,,,,,,,,,,,
