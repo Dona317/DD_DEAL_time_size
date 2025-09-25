@@ -1,4 +1,4 @@
-deal_id,companies,deal_size,deal_date,year_founded,gafam,bigtech_narrow,bigtech_large_excluding_gafamn,bigtech_large_composite,ai_giant_narrow,ai_giant_large,no_bigtech,big_no_tech,acc_inc_custom,acc_inc_pb
+deal_id,company,deal_size,deal_date,year_founded,gafam,bigtech_narrow,bigtech_large_excluding_gafamn,bigtech_large_composite,ai_giant_narrow,ai_giant_large,no_bigtech,big_no_tech,acc_inc_custom,acc_inc_pb
 140519-71T,12 Sigma Technologies,0.27,01-Jul-2016,2015,0,0,0,0,0,0,1,0,0,0
 98154-55T,12 Sigma Technologies,25.71,01-Dec-2017,2015,0,0,0,0,0,0,1,0,0,0
 98154-64T,12 Sigma Technologies,,27-Apr-2017,2015,0,0,0,0,0,0,1,0,0,0
@@ -3540,7 +3540,7 @@ deal_id,companies,deal_size,deal_date,year_founded,gafam,bigtech_narrow,bigtech_
 106694-92T,SenseTime (HKG: 00020),544.58,31-May-2018,2014,0,0,1,1,0,0,0,1,0,0
 185747-23T,SenseTime (HKG: 00020),,12-Dec-2019,2014,0,0,0,0,0,0,0,0,0,0
 97283-08T,SenseTime (HKG: 00020),491.69,09-Apr-2018,2014,0,0,0,0,0,0,1,0,0,0
-118998-10T,SenseTime (HKG: 00020),"1,371.83",07-Aug-2018,2014,0,0,0,0,0,0,1,1,0,0
+118998-10T,SenseTime (HKG: 00020),1371.83,07-Aug-2018,2014,0,0,0,0,0,0,1,1,0,0
 186954-94T,SenseTime (HKG: 00020),492.77,01-Jul-2018,2014,0,0,0,0,0,0,1,1,0,0
 79922-98T,SenseTime (HKG: 00020),8.69,01-Nov-2014,2014,0,0,0,0,0,0,1,0,0,0
 186954-40T,SenseTime (HKG: 00020),554.02,01-Jun-2018,2014,0,0,0,0,0,0,1,1,0,0
@@ -4608,4 +4608,3 @@ deal_id,companies,deal_size,deal_date,year_founded,gafam,bigtech_narrow,bigtech_
 247442-68T,ZuAi,,12-Dec-2023,2021,1,1,0,1,1,1,0,0,0,1
 198742-87T,ZuAi,0.45,29-Dec-2021,2021,0,0,0,0,0,0,1,0,0,0
 227507-05T,ZuAi,0.45,05-Jul-2023,2021,0,0,0,0,0,0,1,0,0,0
-"© PitchBook Data, Inc. 2025",,,,,,,,,,,,,,

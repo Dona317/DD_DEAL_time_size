@@ -1,9 +1,14 @@
-class Data():
+from datetime import datetime
+
+class Deal():
+    DATE_FORMATTER = r"%d-%b-%Y"
+
     def __init__(
     self,
     deal_id: str,
     company: str,
     deal_size: float,
+    deal_date: datetime,
     year_founded: int,
     gafam: bool,
     bigtech_narrow: bool,
@@ -19,6 +24,7 @@ class Data():
         self.deal_id = deal_id
         self.company = company
         self.deal_size = deal_size
+        self.deal_date = deal_date
         self.year_founded = year_founded
         self.gafam = gafam
         self.bigtech_narrow = bigtech_narrow
@@ -32,5 +38,22 @@ class Data():
         self.acc_inc_pb = acc_inc_pb
 
     def __str__(self) -> str:
-        return f"id: {self.deal_id}, company: {self.company}, size: {self.deal_size}, year: {self.year_founded}, gafam: {self.gafam}"
-    
+        return f"id: {self.deal_id}, company: {self.company}, size: {self.deal_size}, date: {self.deal_date}, gafam: {self.gafam}"
+
+    @staticmethod
+    def get_unique_companies(deals: list["Deal"]) -> list[str]:
+        companies = {deal.company for deal in deals}
+        return list(companies)
+
+    @staticmethod
+    def get_deals_by_company_name(all_deals: list["Deal"], company_name: str) -> list["Deal"]:
+        company_deals = [deal for deal in all_deals if deal.company == company_name]
+        return company_deals
+
+    @staticmethod
+    def order_by_deal_date(deals: list["Deal"]) -> None:
+        deals.sort(key=lambda deal: deal.deal_date)
+
+    @staticmethod
+    def print_deals(deals: list["Deal"]):
+        [print(deal) for deal in deals]
