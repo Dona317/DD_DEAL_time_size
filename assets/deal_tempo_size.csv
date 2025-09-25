@@ -3540,7 +3540,7 @@ deal_id,company,deal_size,year_founded,gafam,bigtech_narrow,bigtech_large_exclud
 106694-92T,SenseTime (HKG: 00020),544.58,2014,0,0,1,1,0,0,0,1,0,0
 185747-23T,SenseTime (HKG: 00020),,2014,0,0,0,0,0,0,0,0,0,0
 97283-08T,SenseTime (HKG: 00020),491.69,2014,0,0,0,0,0,0,1,0,0,0
-118998-10T,SenseTime (HKG: 00020),"1,371.83",2014,0,0,0,0,0,0,1,1,0,0
+118998-10T,SenseTime (HKG: 00020),1371.83,2014,0,0,0,0,0,0,1,1,0,0
 186954-94T,SenseTime (HKG: 00020),492.77,2014,0,0,0,0,0,0,1,1,0,0
 79922-98T,SenseTime (HKG: 00020),8.69,2014,0,0,0,0,0,0,1,0,0,0
 186954-40T,SenseTime (HKG: 00020),554.02,2014,0,0,0,0,0,0,1,1,0,0
@@ -4608,4 +4608,3 @@ deal_id,company,deal_size,year_founded,gafam,bigtech_narrow,bigtech_large_exclud
 247442-68T,ZuAi,,2021,1,1,0,1,1,1,0,0,0,1
 198742-87T,ZuAi,0.45,2021,0,0,0,0,0,0,1,0,0,0
 227507-05T,ZuAi,0.45,2021,0,0,0,0,0,0,1,0,0,0
-"� PitchBook Data, Inc. 2025",,,,,,,,,,,,,

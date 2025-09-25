@@ -30,3 +30,7 @@ class Data():
         self.big_no_tech = big_no_tech
         self.acc_inc_custom = acc_inc_custom
         self.acc_inc_pb = acc_inc_pb
+
+    def __str__(self) -> str:
+        return f"id: {self.deal_id}, company: {self.company}, size: {self.deal_size}, year: {self.year_founded}, gafam: {self.gafam}"
+    
