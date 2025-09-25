@@ -17,7 +17,7 @@ class CsvData():
                         row[0],
                         row[1],
                         float(row[2]) if row[2] != '' else 0,
-                        int(row[3]),
+                        int(row[3]) if row[3] != '' else 0,
                         bool(row[4]),
                         bool(row[5]),
                         bool(row[6]),
