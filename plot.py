@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import plotly.graph_objects as go
 import statistics
 
@@ -70,17 +69,14 @@ class Plot:
             "flag": getattr(d, field_name, False)
         } for d in deals])
 
-        # Raggruppamento per periodo
         df["period"] = df["deal_date"].dt.to_period("Q").dt.to_timestamp()
         deals_per_period = df.groupby(["period", "flag"]).size().reset_index(name="n_deals")
 
-        # Pivot per separare True / False
         pivot = deals_per_period.pivot(index="period", columns="flag", values="n_deals").fillna(0)
         pivot = pivot.rename(columns={True: f"{field_name} True", False: f"{field_name} False"}).reset_index()
 
         fig = go.Figure()
 
-        # Barre True / False (senza testo)
         if f"{field_name} True" in pivot.columns:
             fig.add_trace(go.Bar(
                 x=pivot["period"],
@@ -99,7 +95,6 @@ class Plot:
                 opacity=0.8
             ))
 
-        # Media mobile per True
         if f"{field_name} True" in pivot.columns:
             pivot["ma_true"] = pivot[f"{field_name} True"].rolling(window=window, min_periods=1).mean()
             fig.add_trace(go.Scatter(
@@ -110,7 +105,6 @@ class Plot:
                 line=dict(color="darkorange", width=2)
             ))
 
-        # Media mobile per False
         if f"{field_name} False" in pivot.columns:
             pivot["ma_false"] = pivot[f"{field_name} False"].rolling(window=window, min_periods=1).mean()
             fig.add_trace(go.Scatter(

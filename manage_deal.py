@@ -37,6 +37,18 @@ class ManageDeal():
         return data
 
     @staticmethod
+    def get_deals_by_flag(deals: list[Deal], flag: str) -> list[Deal]:
+        deals_flagged = [d for d in deals if getattr(d, flag, False)]
+        return deals_flagged
+
+    @staticmethod
+    def is_in_deals(deal_to_search: Deal, deals: list[Deal]) -> bool:
+        for deal in deals:
+            if deal.deal_id == deal_to_search.deal_id:
+                return True
+        return False
+
+    @staticmethod
     def __get_unique_companies(deals: list[Deal]) -> list[str]:
         companies = {deal.company for deal in deals}
         return list(companies)

@@ -8,6 +8,17 @@ from utils import Utils
 if __name__ == "__main__":
     deals: list[Deal] = ManageDeal.read_data_from_csv()
 
+    # d1 = ManageDeal.get_deals_by_flag(deals, "no_bigtech")
+    # d2 = ManageDeal.get_deals_by_flag(deals, "bigtech_large_composite")
+    # print(f"total_deals: {len(deals)}, deals no_bigtech: {len(d1)}, deals bigtech_large_composite: {len(d2)}")
+
+    # count = 0
+    # for deal in deals:
+    #     if not ManageDeal.is_in_deals(deal, d1) and not ManageDeal.is_in_deals(deal, d2):
+    #         count += 1
+    #         print(deal)
+    # print(f"remaining: {count}")
+
     deltas_months = ManageDeal.deltas_time_months_for_all_deals(deals)
 
     avg_months = statistics.mean(deltas_months)
