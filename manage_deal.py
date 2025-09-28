@@ -75,7 +75,7 @@ class ManageDeal():
     @staticmethod
     def __csv_header() -> list:
         return [
-            "deal_id","company","deal_size","deal_date","year_founded","gafam","bigtech_narrow","bigtech_large_excluding_gafamn",
+            "deal_id","company","deal_size","deal_date","prev_deal_date","year_founded","gafam","bigtech_narrow","bigtech_large_excluding_gafamn",
             "bigtech_large_composite","ai_giant_narrow","ai_giant_large","no_bigtech","big_no_tech","acc_inc_custom","acc_inc_pb",
             "is_prev_gafam","is_prev_bigtech_narrow","is_prev_bigtech_large_excluding_gafamn","is_prev_bigtech_large_composite",
             "is_prev_ai_giant_narrow","is_prev_ai_giant_large","is_prev_no_bigtech","is_prev_big_no_tech","is_prev_acc_inc_custom","is_prev_acc_inc_pb"
@@ -84,7 +84,7 @@ class ManageDeal():
     @staticmethod
     def __to_csv_line(deal: Deal) -> list:
         return [
-            deal.deal_date,deal.company,deal.deal_size,deal.deal_date,deal.year_founded,ManageDeal.__to_int(deal.gafam),ManageDeal.__to_int(deal.bigtech_narrow),ManageDeal.__to_int(deal.bigtech_large_excluding_gafamn),
+            deal.deal_date,deal.company,deal.deal_size,deal.deal_date,deal.prev_deal_date,deal.year_founded,ManageDeal.__to_int(deal.gafam),ManageDeal.__to_int(deal.bigtech_narrow),ManageDeal.__to_int(deal.bigtech_large_excluding_gafamn),
             ManageDeal.__to_int(deal.bigtech_large_composite),ManageDeal.__to_int(deal.ai_giant_narrow),ManageDeal.__to_int(deal.ai_giant_large),ManageDeal.__to_int(deal.no_bigtech),ManageDeal.__to_int(deal.big_no_tech),ManageDeal.__to_int(deal.acc_inc_custom),ManageDeal.__to_int(deal.acc_inc_pb),
             ManageDeal.__to_int(deal.is_prev_gafam),ManageDeal.__to_int(deal.is_prev_bigtech_narrow),ManageDeal.__to_int(deal.is_prev_bigtech_large_excluding_gafamn),ManageDeal.__to_int(deal.is_prev_bigtech_large_composite),
             ManageDeal.__to_int(deal.is_prev_ai_giant_narrow),ManageDeal.__to_int(deal.is_prev_ai_giant_large),ManageDeal.__to_int(deal.is_prev_no_bigtech),ManageDeal.__to_int(deal.is_prev_big_no_tech),ManageDeal.__to_int(deal.is_prev_acc_inc_custom),ManageDeal.__to_int(deal.is_prev_acc_inc_pb)
@@ -101,6 +101,7 @@ class ManageDeal():
             current = deals[i]
             if previous.company != current.company:
                 continue
+            current.prev_deal_date = previous.deal_date
             if previous.gafam:
                 current.is_prev_gafam = True
             if previous.bigtech_narrow:

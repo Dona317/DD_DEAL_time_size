@@ -25,6 +25,7 @@ class Deal():
         self.company = company
         self.deal_size = deal_size
         self.deal_date = deal_date
+        self.prev_deal_date = datetime(year_founded, 1, 1)
         self.year_founded = year_founded
         self.gafam = gafam
         self.bigtech_narrow = bigtech_narrow
