@@ -26,20 +26,17 @@ if __name__ == "__main__":
     CsvData.write_data_to_csv(csv_data)
 
     plot = Plot()
-    plot.plot_std_data(
-        deltas_months,
-        title="Distribution of deal deltas (months)",
-        xlabel="Delta (months)",
-        ylabel="Frequency",
-        file_output_name="deals_deltas_raw.png"
-    )
+    # plot.plot_std_data(deltas_months,title="Distribution of deal deltas (months)",xlabel="Delta (months)",ylabel="Frequency")
+    # plot.plot_std_data(filtered_deltas,title="Distribution of deal deltas (months) - Outliers removed",xlabel="Delta (months)",ylabel="Frequency")
 
-    plot.plot_std_data(
-        filtered_deltas,
-        title="Distribution of deal deltas (months) - Outliers removed",
-        xlabel="Delta (months)",
-        ylabel="Frequency",
-        file_output_name="deals_deltas_filtered.png"
-    )
+    plot.plot_deals_over_time_by_flag(deals, "gafam", window=4, log_scale=True)
+    plot.plot_deals_over_time_by_flag(deals, "bigtech_narrow", window=4, log_scale=True)
+    plot.plot_deals_over_time_by_flag(deals, "bigtech_large_excluding_gafamn", window=4, log_scale=True)
+    plot.plot_deals_over_time_by_flag(deals, "bigtech_large_composite", window=4, log_scale=True)
+    plot.plot_deals_over_time_by_flag(deals, "ai_giant_narrow", window=4, log_scale=True)
+    plot.plot_deals_over_time_by_flag(deals, "ai_giant_large", window=4, log_scale=True)
+    plot.plot_deals_over_time_by_flag(deals, "no_bigtech", window=4, log_scale=True)
+    plot.plot_deals_over_time_by_flag(deals, "big_no_tech", window=4, log_scale=True)
+    plot.plot_deals_over_time_by_flag(deals, "acc_inc_custom", window=4, log_scale=True)
+    plot.plot_deals_over_time_by_flag(deals, "acc_inc_pb", window=4, log_scale=True)
 
-    plot.plot_deals_over_time(deals, window=4, png_generation=True, file_output_name="deals_quarterly_hist.png")
