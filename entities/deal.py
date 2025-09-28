@@ -36,6 +36,16 @@ class Deal():
         self.big_no_tech = big_no_tech
         self.acc_inc_custom = acc_inc_custom
         self.acc_inc_pb = acc_inc_pb
+        self.is_prev_gafam = False
+        self.is_prev_bigtech_narroFalsew = False
+        self.is_prev_bigtech_large_excludinFalseg_gafamn = False
+        self.is_prev_bigtech_large_composite = False
+        self.is_prev_ai_giant_narrow = False
+        self.is_prev_ai_giant_large = False
+        self.is_prev_no_bigtech = False
+        self.is_prev_big_no_tech =False
+        self.is_prev_acc_inc_customFalse = False
+        self.is_prev_acc_inc_pb = False
 
     def __str__(self) -> str:
         return f"id: {self.deal_id}, company: {self.company}, size: {self.deal_size}, date: {self.deal_date}, gafam: {self.gafam}"

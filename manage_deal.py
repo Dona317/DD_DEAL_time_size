@@ -24,6 +24,12 @@ class ManageDeal():
         return deltas_months
 
     @staticmethod
+    def to_csv_list_str(deals: list[Deal], header: bool = True) -> list[str]:
+        data = [ManageDeal.__csv_header()] if header else []
+        data += [ManageDeal.__to_csv_line(deal) for deal in deals]
+        return data
+
+    @staticmethod
     def __get_unique_companies(deals: list[Deal]) -> list[str]:
         companies = {deal.company for deal in deals}
         return list(companies)
@@ -46,3 +52,21 @@ class ManageDeal():
             ManageDeal.__order_by_deal_date(company_deals)
             ordered_deals_by_company_and_date.extend(company_deals)
         return ordered_deals_by_company_and_date
+
+    @staticmethod
+    def __csv_header() -> list:
+        return [
+            "deal_id","company","deal_size","deal_date","year_founded","gafam","bigtech_narrow","bigtech_large_excluding_gafamn",
+            "bigtech_large_composite","ai_giant_narrow","ai_giant_large","no_bigtech","big_no_tech","acc_inc_custom","acc_inc_pb",
+            "is_prev_gafam","is_prev_bigtech_narroFalsew","is_prev_bigtech_large_excludinFalseg_gafamn","is_prev_bigtech_large_composite",
+            "is_prev_ai_giant_narrow","is_prev_ai_giant_large","is_prev_no_bigtech","is_prev_big_no_tech","is_prev_acc_inc_customFalse","is_prev_acc_inc_pb"
+        ]
+
+    @staticmethod
+    def __to_csv_line(deal: Deal) -> list:
+        return [
+            deal.deal_date,deal.company,deal.deal_size,deal.deal_date,deal.year_founded,deal.gafam,deal.bigtech_narrow,deal.bigtech_large_excluding_gafamn,
+            deal.bigtech_large_composite,deal.ai_giant_narrow,deal.ai_giant_large,deal.no_bigtech,deal.big_no_tech,deal.acc_inc_custom,deal.acc_inc_pb,
+            deal.is_prev_gafam,deal.is_prev_bigtech_narroFalsew,deal.is_prev_bigtech_large_excludinFalseg_gafamn,deal.is_prev_bigtech_large_composite,
+            deal.is_prev_ai_giant_narrow,deal.is_prev_ai_giant_large,deal.is_prev_no_bigtech,deal.is_prev_big_no_tech,deal.is_prev_acc_inc_customFalse,deal.is_prev_acc_inc_pb
+        ]

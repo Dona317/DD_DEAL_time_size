@@ -1,4 +1,3 @@
-
 import statistics
 from csv_data import CsvData
 from entities.deal import Deal
@@ -22,6 +21,9 @@ if __name__ == "__main__":
     std_months = statistics.stdev(filtered_deltas) if len(filtered_deltas) > 1 else 0.5
     print(f"Avg delta time (months) (outlier removed): {avg_months:.2f}")
     print(f"Standard deviation (months) (outlier removed): {std_months:.2f}")
+
+    csv_data = ManageDeal.to_csv_list_str(deals, True)
+    CsvData.write_data_to_csv(csv_data)
 
     plot = Plot()
     plot.plot_std_data(
