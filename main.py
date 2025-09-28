@@ -6,7 +6,7 @@ from plot import Plot
 from utils import Utils
 
 if __name__ == "__main__":
-    deals: list[Deal] = CsvData.read_data_from_csv()
+    deals: list[Deal] = ManageDeal.read_data_from_csv()
 
     deltas_months = ManageDeal.deltas_time_months_for_all_deals(deals)
 
@@ -42,3 +42,4 @@ if __name__ == "__main__":
         file_output_name="deals_deltas_filtered.png"
     )
 
+    plot.plot_deals_over_time(deals, window=4, png_generation=True, file_output_name="deals_quarterly_hist.png")

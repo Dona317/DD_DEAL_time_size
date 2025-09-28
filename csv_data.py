@@ -2,7 +2,6 @@ import csv
 from datetime import datetime
 
 from entities.deal import Deal
-from manage_deal import ManageDeal
 
 CSV_FILE_INPUT = "./assets/deal_tempo_size.csv"
 CSV_FILE_OUTPUT = "./assets/deal_tempo_size_output.csv"

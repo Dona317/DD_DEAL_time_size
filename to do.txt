@@ -1,6 +1,6 @@
 1-TEMPO
 
-1.1- Plot x-asse tempo y-asse n_deal per data (ottenere una distribuzione dei deal per vedere se sono aumentati negli ultimi anni)
+1.1- Plot x-asse tempo y-asse n_deal per data (ottenere una distribuzione dei deal per vedere se sono aumentati negli ultimi anni raggruppati tri-mestrali)
 1.3- Plot e Compute mean e STD  di time(BIN semestrale o trimestrale), Dealta_TIME
 
 2-DEAL
