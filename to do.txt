@@ -1,17 +1,17 @@
 1-TEMPO
 
 1.1- Plot x-asse tempo y-asse n_deal per data (ottenere una distribuzione dei deal per vedere se sono aumentati negli ultimi anni)
-1.3- Plot e Compute mean e STD  di Dealta_TIME
+1.3- Plot e Compute mean e STD  di time(BIN semestrale o trimestrale), Dealta_TIME
 
 2-DEAL
 2.1- Creazione della varaibile Is_previusly_invested_by_*BIGTECH* che tiene traccia del investimento nel roun precedente da parte di una big tech
 2.2- 
 
 
-3-Hazard Model
--non credo di essere capace-
+3-Hazard Model   !!!!!!!!!!!-non credo di essere capace-!!!!!!!!!!!!
 
-
+3.1- hazard→morte 
+3.2- hazard→primo investimento BigTech
 
 
 0.1- Esportare in .csv e poi in .xlsx e .std per analisi in stata
