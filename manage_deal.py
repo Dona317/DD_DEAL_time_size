@@ -84,7 +84,7 @@ class ManageDeal():
     @staticmethod
     def __to_csv_line(deal: Deal) -> list:
         return [
-            deal.deal_date,deal.company,deal.deal_size,deal.deal_date,deal.prev_deal_date,deal.year_founded,ManageDeal.__to_int(deal.gafam),ManageDeal.__to_int(deal.bigtech_narrow),ManageDeal.__to_int(deal.bigtech_large_excluding_gafamn),
+            deal.deal_id,deal.company,deal.deal_size,deal.deal_date,deal.prev_deal_date,deal.year_founded,ManageDeal.__to_int(deal.gafam),ManageDeal.__to_int(deal.bigtech_narrow),ManageDeal.__to_int(deal.bigtech_large_excluding_gafamn),
             ManageDeal.__to_int(deal.bigtech_large_composite),ManageDeal.__to_int(deal.ai_giant_narrow),ManageDeal.__to_int(deal.ai_giant_large),ManageDeal.__to_int(deal.no_bigtech),ManageDeal.__to_int(deal.big_no_tech),ManageDeal.__to_int(deal.acc_inc_custom),ManageDeal.__to_int(deal.acc_inc_pb),
             ManageDeal.__to_int(deal.is_prev_gafam),ManageDeal.__to_int(deal.is_prev_bigtech_narrow),ManageDeal.__to_int(deal.is_prev_bigtech_large_excluding_gafamn),ManageDeal.__to_int(deal.is_prev_bigtech_large_composite),
             ManageDeal.__to_int(deal.is_prev_ai_giant_narrow),ManageDeal.__to_int(deal.is_prev_ai_giant_large),ManageDeal.__to_int(deal.is_prev_no_bigtech),ManageDeal.__to_int(deal.is_prev_big_no_tech),ManageDeal.__to_int(deal.is_prev_acc_inc_custom),ManageDeal.__to_int(deal.is_prev_acc_inc_pb)
