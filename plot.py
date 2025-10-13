@@ -127,12 +127,14 @@ class Plot:
 
         return pivot
 
-    def plot_deals_per_year(self, deals: list[Deal], window: int = 3):
+    def plot_deals_per_year(self, deals: list[Deal], window: int = 1):
         df = pd.DataFrame([{
             "deal_date": d.deal_date
         } for d in deals if d.deal_date is not None])
 
         df["year"] = df["deal_date"].dt.year
+        # Escludo l'anno 2025 per mancanza di dati successivi a gen 2025
+        df = df[df["year"] != 2025]
         deals_per_year = df.groupby("year").size().reset_index(name="n_deals")
 
         avg = deals_per_year["n_deals"].mean()
@@ -180,7 +182,7 @@ class Plot:
             name=f"Trend (Moving Avg {window})",
             line=dict(shape="spline", color="darkorange", width=3)
         ))
-        
+
         fig.update_layout(
             title="Histogram of Deals per Year",
             xaxis_title="Year",
