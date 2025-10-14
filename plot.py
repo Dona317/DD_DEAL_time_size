@@ -71,51 +71,51 @@ class Plot:
         deals_per_period = df.groupby(["period", "flag"]).size().reset_index(name="n_deals")
 
         pivot = deals_per_period.pivot(index="period", columns="flag", values="n_deals").fillna(0)
-        pivot = pivot.rename(columns={True: f"{field_name} True", False: f"{field_name} False"}).reset_index()
+        pivot = pivot.rename(columns={True: f"{field_name} Invested", False: f"{field_name} Not Invested"}).reset_index()
 
         fig = go.Figure()
 
-        if f"{field_name} True" in pivot.columns:
+        if f"{field_name} Invested" in pivot.columns:
             fig.add_trace(go.Bar(
                 x=pivot["period"],
-                y=pivot[f"{field_name} True"],
-                name=f"{field_name} True",
+                y=pivot[f"{field_name} Invested"],
+                name=f"{field_name} Invested",
                 marker_color="orange",
                 opacity=0.8
             ))
 
-        if f"{field_name} False" in pivot.columns:
+        if f"{field_name} Not Invested" in pivot.columns:
             fig.add_trace(go.Bar(
                 x=pivot["period"],
-                y=pivot[f"{field_name} False"],
-                name=f"{field_name} False",
-                marker_color="steelblue",
+                y=pivot[f"{field_name} Not Invested"],
+                name=f"{field_name} Not Invested",
+                marker_color="#728fa5",
                 opacity=0.8
             ))
 
-        if f"{field_name} True" in pivot.columns:
-            pivot["ma_true"] = pivot[f"{field_name} True"].rolling(window=window, min_periods=1).mean()
+        if f"{field_name} Invested" in pivot.columns:
+            pivot["ma_true"] = pivot[f"{field_name} Invested"].rolling(window=window, min_periods=1).mean()
             fig.add_trace(go.Scatter(
                 x=pivot["period"],
                 y=pivot["ma_true"],
                 mode="lines",
-                name=f"{field_name} True Moving Avg ({window})",
+                name=f"{field_name} Invested Moving Avg ({window})",
                 line=dict(color="darkorange", width=2)
             ))
 
-        if f"{field_name} False" in pivot.columns:
-            pivot["ma_false"] = pivot[f"{field_name} False"].rolling(window=window, min_periods=1).mean()
+        if f"{field_name} Not Invested" in pivot.columns:
+            pivot["ma_false"] = pivot[f"{field_name} Not Invested"].rolling(window=window, min_periods=1).mean()
             fig.add_trace(go.Scatter(
                 x=pivot["period"],
                 y=pivot["ma_false"],
                 mode="lines",
-                name=f"{field_name} False Moving Avg ({window})",
+                name=f"{field_name} Not Invested Moving Avg ({window})",
                 line=dict(color="blue", width=2)
             ))
 
         fig.update_layout(
             barmode="stack",
-            title=f"Deals count (Quarter) - {field_name} True vs False with trend ({window})",
+            title=f"Deals count (Quarter) - {field_name} Invested vs Not Invested with trend ({window})",
             xaxis_title=f"Time (Quarter)",
             yaxis_title="Deals count (log scale)" if log_scale else "Deals count",
             bargap=0.2,
@@ -147,7 +147,7 @@ class Plot:
             x=deals_per_year["year"],
             y=deals_per_year["n_deals"],
             name="Deals per Year",
-            marker_color="steelblue",
+            marker_color="#728fa5",
             opacity=0.8
         ))
 
@@ -175,6 +175,7 @@ class Plot:
         #    line=dict(color="green", dash="dot")
         #))
         # Linea di tendenza (moving average)
+        '''
         fig.add_trace(go.Scatter(
             x=deals_per_year["year"],
             y=deals_per_year["trend"],
@@ -182,7 +183,7 @@ class Plot:
             name=f"Trend (Moving Avg {window})",
             line=dict(shape="spline", color="darkorange", width=3)
         ))
-
+        '''
         fig.update_layout(
             title="Histogram of Deals per Year",
             xaxis_title="Year",
@@ -194,3 +195,55 @@ class Plot:
         fig.show()
 
         return deals_per_year
+
+    def plot_deals_over_time_by_flag_noline(
+            self,
+            deals: list[Deal],
+            field_name: str,
+            log_scale: bool = False
+        ):
+        df = pd.DataFrame([{
+            "deal_date": d.deal_date,
+            "flag": getattr(d, field_name, False)
+        } for d in deals])
+
+        df["period"] = df["deal_date"].dt.to_period("Q").dt.to_timestamp()
+        deals_per_period = df.groupby(["period", "flag"]).size().reset_index(name="n_deals")
+
+        pivot = deals_per_period.pivot(index="period", columns="flag", values="n_deals").fillna(0)
+        pivot = pivot.rename(columns={True: f"{field_name} Invested", False: f"{field_name} Not invested"}).reset_index()
+
+        fig = go.Figure()
+
+        # Controlla e usa i nomi rinominati correttamente
+        if f"{field_name} Invested" in pivot.columns:
+            fig.add_trace(go.Bar(
+                x=pivot["period"],
+                y=pivot[f"{field_name} Invested"],
+                name=f"{field_name} Invested",             # legenda più leggibile
+                marker_color="orange",
+                opacity=0.8
+            ))
+
+        if f"{field_name} Not invested" in pivot.columns:
+            fig.add_trace(go.Bar(
+                x=pivot["period"],
+                y=pivot[f"{field_name} Not invested"],
+                name=f"{field_name} Not invested",
+                marker_color="#728fa5",
+                opacity=0.8
+            ))
+
+        fig.update_layout(
+            barmode="stack",
+            title=f"Deals count (Quarter) – {field_name} Invested against Not invested",
+            xaxis_title="Time (Quarter)",
+            yaxis_title="Deals count (log scale)" if log_scale else "Deals count",
+            bargap=0.2,
+            template="plotly_white",
+            yaxis_type="log" if log_scale else "linear"
+        )
+
+        fig.show()
+
+        return pivot
