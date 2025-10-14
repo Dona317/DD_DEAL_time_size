@@ -41,7 +41,7 @@ plot = Plot()
 # plot.plot_std_data(filtered_deltas,title="Distribution of deal deltas (months) - Outliers removed",xlabel="Delta (months)",ylabel="Frequency")
 # Fig 1 – Histogram of deals per year [Python fatto]
 plot.plot_deals_per_year(deals)
-'''
+
 # Fig 2 – Evolution of # deals by investor category no log line 0m (Trend of BigTech vs Non-BigTech vs Accelerators)
 plot.plot_deals_over_time_by_flag_noline(deals, "gafam", log_scale=False)
 plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_narrow",  log_scale=False)
@@ -53,6 +53,35 @@ plot.plot_deals_over_time_by_flag_noline(deals, "ai_giant_large", log_scale=Fals
 plot.plot_deals_over_time_by_flag_noline(deals, "big_no_tech", log_scale=False)
 plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_custom", log_scale=False)
 plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_pb", log_scale=False)
+
+
+# datogliere
+plot.plot_deals_over_time_by_flag_noline(deals, "gafam", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_narrow",  log_scale=False)
+#plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_large_excluding_gafamn", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_large_composite", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "ai_giant_narrow", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "ai_giant_large", log_scale=False)
+#plot.plot_deals_over_time_by_flag_noline(deals, "no_bigtech", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "big_no_tech", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_custom", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_pb", log_scale=False)
+
+
+
+# datogliere
+plot.plot_deals_over_time_by_flag_noline(deals, "gafam", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_narrow",  log_scale=False)
+#plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_large_excluding_gafamn", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_large_composite", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "ai_giant_narrow", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "ai_giant_large", log_scale=False)
+#plot.plot_deals_over_time_by_flag_noline(deals, "no_bigtech", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "big_no_tech", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_custom", log_scale=False)
+plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_pb", log_scale=False)
+
+
 '''
 # Fig 2 – Evolution of # deals by investor category log line 0m (Trend of BigTech vs Non-BigTech vs Accelerators)
 plot.plot_deals_over_time_by_flag_noline(deals, "gafam", log_scale=True)
@@ -66,7 +95,7 @@ plot.plot_deals_over_time_by_flag_noline(deals, "big_no_tech", log_scale=True)
 plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_custom", log_scale=True)
 plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_pb", log_scale=True)
 
-'''
+
 # Fig 2 – Evolution of # deals by investor category no log line 3m (Trend of BigTech vs Non-BigTech vs Accelerators)
 plot.plot_deals_over_time_by_flag(deals, "gafam", window=3, log_scale=False)
 plot.plot_deals_over_time_by_flag(deals, "bigtech_narrow", window=3, log_scale=False)

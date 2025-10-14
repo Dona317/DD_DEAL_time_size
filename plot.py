@@ -207,7 +207,10 @@ class Plot:
             "flag": getattr(d, field_name, False)
         } for d in deals])
 
-        df["period"] = df["deal_date"].dt.to_period("Q").dt.to_timestamp()
+        df["year"] = df["deal_date"].dt.year
+        df["period"] = df["deal_date"].dt.to_period("Y").dt.to_timestamp()
+        # Escludo l'anno 2025 per mancanza di dati successivi a gen 2025
+        df = df[df["year"] != 2025]
         deals_per_period = df.groupby(["period", "flag"]).size().reset_index(name="n_deals")
 
         pivot = deals_per_period.pivot(index="period", columns="flag", values="n_deals").fillna(0)
@@ -236,8 +239,8 @@ class Plot:
 
         fig.update_layout(
             barmode="stack",
-            title=f"Deals count (Quarter) – {field_name} Invested against Not invested",
-            xaxis_title="Time (Quarter)",
+            title=f"Deals count (Year) – {field_name} Invested against Not invested",
+            xaxis_title="Time (Year)",
             yaxis_title="Deals count (log scale)" if log_scale else "Deals count",
             bargap=0.2,
             template="plotly_white",
