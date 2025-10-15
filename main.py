@@ -54,34 +54,6 @@ plot.plot_deals_over_time_by_flag_noline(deals, "big_no_tech", log_scale=False)
 plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_custom", log_scale=False)
 plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_pb", log_scale=False)
 
-
-# datogliere
-plot.plot_deals_over_time_by_flag_noline(deals, "gafam", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_narrow",  log_scale=False)
-#plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_large_excluding_gafamn", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_large_composite", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "ai_giant_narrow", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "ai_giant_large", log_scale=False)
-#plot.plot_deals_over_time_by_flag_noline(deals, "no_bigtech", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "big_no_tech", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_custom", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_pb", log_scale=False)
-
-
-
-# datogliere
-plot.plot_deals_over_time_by_flag_noline(deals, "gafam", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_narrow",  log_scale=False)
-#plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_large_excluding_gafamn", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "bigtech_large_composite", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "ai_giant_narrow", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "ai_giant_large", log_scale=False)
-#plot.plot_deals_over_time_by_flag_noline(deals, "no_bigtech", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "big_no_tech", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_custom", log_scale=False)
-plot.plot_deals_over_time_by_flag_noline(deals, "acc_inc_pb", log_scale=False)
-
-
 '''
 # Fig 2 – Evolution of # deals by investor category log line 0m (Trend of BigTech vs Non-BigTech vs Accelerators)
 plot.plot_deals_over_time_by_flag_noline(deals, "gafam", log_scale=True)
