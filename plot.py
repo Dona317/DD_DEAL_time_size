@@ -140,7 +140,7 @@ class Plot:
         avg = deals_per_year["n_deals"].mean()
         std = deals_per_year["n_deals"].std() if len(deals_per_year) > 1 else 0.0
         # Calcola la media mobile come linea di tendenza
-        deals_per_year["trend"] = deals_per_year["n_deals"].rolling(window=window, min_periods=1).mean()
+        #deals_per_year["trend"] = deals_per_year["n_deals"].rolling(window=window, min_periods=1).mean()
 
         fig = go.Figure()
         fig.add_trace(go.Bar(
@@ -148,7 +148,10 @@ class Plot:
             y=deals_per_year["n_deals"],
             name="Deals per Year",
             marker_color="#728fa5",
-            opacity=0.8
+            opacity=0.8,
+            text=deals_per_year["n_deals"],         # mostra il valore numerico
+            textposition="outside",                 # posizione sopra la barra
+            textfont=dict(size=12)
         ))
 
         #fig.add_trace(go.Scatter(
@@ -195,7 +198,7 @@ class Plot:
         fig.show()
 
         return deals_per_year
-
+    
     def plot_deals_over_time_by_flag_noline(
             self,
             deals: list[Deal],
@@ -214,32 +217,38 @@ class Plot:
         deals_per_period = df.groupby(["period", "flag"]).size().reset_index(name="n_deals")
 
         pivot = deals_per_period.pivot(index="period", columns="flag", values="n_deals").fillna(0)
-        pivot = pivot.rename(columns={True: f"{field_name} Invested", False: f"{field_name} Not invested"}).reset_index()
+        pivot = pivot.rename(columns={True: f"Invested by {field_name}", False: f"Other Deals"}).reset_index()
 
         fig = go.Figure()
 
         # Controlla e usa i nomi rinominati correttamente
-        if f"{field_name} Invested" in pivot.columns:
+        if f"Invested by {field_name}" in pivot.columns:
             fig.add_trace(go.Bar(
                 x=pivot["period"],
-                y=pivot[f"{field_name} Invested"],
-                name=f"{field_name} Invested",             # legenda più leggibile
+                y=pivot[f"Invested by {field_name}"],
+                name=f"Invested by {field_name}",           # legenda più leggibile
                 marker_color="orange",
-                opacity=0.8
+                opacity=0.8,
+                #text=pivot[f"Invested by {field_name}"],    # mostra il valore numerico
+                #textposition="outside",                     # posizione sopra la barra
+                #textfont=dict(size=12)
             ))
 
-        if f"{field_name} Not invested" in pivot.columns:
+        if f"Other Deals" in pivot.columns:
             fig.add_trace(go.Bar(
                 x=pivot["period"],
-                y=pivot[f"{field_name} Not invested"],
-                name=f"{field_name} Not invested",
+                y=pivot[f"Other Deals"],
+                name=f"Other Deals",
                 marker_color="#728fa5",
-                opacity=0.8
+                opacity=0.8,
+                #text=pivot[f"Other Deals"],       # mostra il valore numerico
+                #textposition="outside",           # posizione sopra la barra
+                #textfont=dict(size=12)
             ))
 
         fig.update_layout(
             barmode="stack",
-            title=f"Deals count (Year) – {field_name} Invested against Not invested",
+            title=f"Deals Count (Year) – Invested by {field_name} over Total Investments",
             xaxis_title="Time (Year)",
             yaxis_title="Deals count (log scale)" if log_scale else "Deals count",
             bargap=0.2,
@@ -250,3 +259,4 @@ class Plot:
         fig.show()
 
         return pivot
+
