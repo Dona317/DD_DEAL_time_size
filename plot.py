@@ -199,6 +199,61 @@ class Plot:
 
         return deals_per_year
     
+
+    def plot_deal_value_per_year(self, deals: list, window: int = 1):
+        df = pd.DataFrame([{
+            "deal_date": d.deal_date,
+            "deal_size": d.deal_size  # Assicurati che ogni oggetto Deal abbia questo attributo
+        } for d in deals if d.deal_date is not None and d.deal_size is not None])
+
+        df["year"] = df["deal_date"].dt.year
+        df = df[df["year"] != 2025]  # esclude il 2025 per coerenza con la serie temporale
+
+        # Somma totale del deal size per anno
+        deals_value_per_year = (
+            df.groupby("year")["deal_size"]
+            .sum()
+            .reset_index(name="total_deal_value")
+        )
+
+        # Statistiche descrittive
+        avg = deals_value_per_year["total_deal_value"].mean()
+        std = deals_value_per_year["total_deal_value"].std()
+
+        # Istogramma con Plotly
+        fig = go.Figure()
+        fig.add_trace(go.Bar(
+            x=deals_value_per_year["year"],
+            y=deals_value_per_year["total_deal_value"],
+            name="Total Deal Value per Year",
+            marker_color="#728fa5",
+            opacity=0.8,
+            text=deals_value_per_year["total_deal_value"].round(2),
+            textposition="outside",
+            textfont=dict(size=12)
+        ))
+        '''
+        # Linea della media
+        fig.add_trace(go.Scatter(
+            x=deals_value_per_year["year"],
+            y=[avg] * len(deals_value_per_year),
+            mode="lines",
+            name="Average Value",
+            line=dict(color="red", dash="dash")
+        ))
+        '''
+        fig.update_layout(
+            title="Histogram of Total Deal Value per Year",
+            xaxis_title="Year",
+            yaxis_title="Total Deal Value (USD million)",
+            template="plotly_white",
+            bargap=0.2
+        )
+
+        fig.show()
+
+        return deals_value_per_year
+
     def plot_deals_over_time_by_flag_noline(
             self,
             deals: list[Deal],
